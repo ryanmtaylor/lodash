@@ -28,7 +28,14 @@ import isObjectLike from './isObjectLike.js'
  * // => true
  */
 function isPlainObject(value) {
-  return !!value && (value.constructor === Object || Object.getPrototypeOf(value) === null)
+  if(!value) {
+    return false;
+  }
+  const valuePrototype === Object.getPrototypeOf(value);
+  if(valuePrototype === null) {
+    return true;
+  }
+  return Object.getPrototypeOf(valuePrototype) === null && valuePrototype.constructor === value.constructor;
 }
 
 export default isPlainObject
